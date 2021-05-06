@@ -1,0 +1,40 @@
+
+
+@font-face {
+    font-family: 'fb';
+    src: url('../fonts/ProximaNova-Bold.woff2') format('woff2'),
+        url('../fonts/ProximaNova-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'fr';
+    src: url('../fonts/ProximaNova-Regular.woff2') format('woff2'),
+        url('../fonts/ProximaNova-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+
+
+@font-face {
+    font-family: 'fl';
+    src: url('../ProximaNova-Light.woff2') format('woff2'),
+        url('../ProximaNova-Light.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'fs';
+    src: url('../ProximaNova-Semibold.woff2') format('woff2'),
+        url('../ProximaNova-Semibold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
