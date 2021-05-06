@@ -1,6 +1,6 @@
 // load
 $(window).on('load', function () {
-    $('.loading-screen').fadeOut(800);
+    $('.loading-screen').slideUp(800);
 });
 //
 //navigation
@@ -10,6 +10,7 @@ $('.hambeger').click(function () {
     $('.list_menu').toggleClass('active');
     $('.home').toggleClass('active');
     $('.hambeger').toggleClass('active');
+    $('main').toggleClass('active');
 });
 
 //BackToTop
@@ -184,7 +185,13 @@ $('.studio_img').flickity({
     friction: 0.2,
     lazyLoad: 1,
     fullscreen: true,
-
+     on: {
+         change: function (index) {
+             let number = $('.number b');
+             let indexPage = index + 1;
+             number.text(indexPage.toString().padStart(2, 0))
+         }
+     }
 });
 
 $('.control .next').on('click', function () {
@@ -193,18 +200,24 @@ $('.control .next').on('click', function () {
 $('.control .prev').on('click', function () {
     $('.studio_img').flickity('previous');
 });
+
+$('.control_studio-detail .next').on('click', function () {
+    $('.studio_img').flickity('next', true);
+});
+$('.control_studio-detail .prev').on('click', function () {
+    $('.studio_img').flickity('previous');
+});
+
 // 
 $('.carousel_cafegbox').flickity({
     wrapAround: true,
     prevNextButtons: false,
     pageDots: false,
-    lazyLoad: true,
     draggable: false,
-    imagesLoaded: true,
-    selectedAttraction: 0.01,
-    friction: 0.2,
-    lazyLoad: 1,
-    fullscreen: true,
+    // imagesLoaded: true,
+    // selectedAttraction: 0.01,
+    // friction: 0.2,
+    // lazyLoad: 1,
 })
 
 $('.btn_control .next').on('click', function () {
@@ -218,8 +231,8 @@ $('.btn_control .prev').on('click', function () {
 new WOW().init();
 
 // scroll
-// let $logo = document.querySelector(".logo")
-// let $header = document.querySelector("header")
+let $logo = document.querySelector(".logo")
+let $header = document.querySelector("header")
 
 window.addEventListener("scroll", function () {
 
@@ -235,4 +248,29 @@ window.addEventListener("scroll", function () {
         $('.logo-scroll a').slideUp();
     }
 
-})
+});
+
+// 
+// MENU SCROLL
+let prevScroll = $('html').scrollTop();
+
+$(document).scroll(function () {
+    if (prevScroll < window.pageYOffset) {
+        $('.navigation').css({
+            top: -$('.navigation').height(),
+            transition: 'all 0.4s'
+        });
+    } else {
+        $('.navigation').css({
+            top: 0,
+            transition: 'all 0.4s',
+        });
+    }
+    prevScroll = window.pageYOffset;
+});
+
+// 
+
+$('.view-fullscreen-button').on('click', function () {
+    $('.studio_img').flickity('viewFullscreen');
+});
